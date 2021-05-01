@@ -1,0 +1,27 @@
+html{height:100%;}
+body{height:100%;}
+.main{
+    width:100%;display:flex;overflow: auto;background: #f0f0f0;height: 100%;
+}
+@media screen and (min-height:500px){
+    .nav{height:10%;background:lightblue;font-family: verdana;width: 100%;
+
+    
+}
+.body{height:90%;width:100%;background: #f0f0f0;}
+.menu{
+    height:30px;width:30px;background: white;cursor:pointer;margin-top: 5px;display: flex;
+    flex-direction: column;padding:2px;
+}
+.sidenav{
+    height:98%;width:200px;background: lightslategray;display: none;padding:10px 0 0 20px;
+    overflow: auto;z-index: 4;
+}
+.midsection{height:100%;width:90%;background: #f0f0f0;display: block;}
+}
+.snavhead{display: flex;justify-content: space-between;margin-bottom:10px;height:30px;
+    font-weight: bold;font-size: 28px;
+}
+    .close{float: left;background: red;height: 100%;width:30px;text-align: center;line-height: 100%;
+        font-weight: bold;font-size: 30px;cursor: pointer;}
+
