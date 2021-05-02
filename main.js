@@ -2,7 +2,7 @@ var price=45;
 var yearProduction=[
 {"period":"January","production":1876,"days":31},
 {"period":"Febuary","production":1876,"days":28},
-{"period":"March","production":1876,"days":21},
+{"period":"March","production":1876,"days":31},
 {"period":"April","production":1876,"days":30},
 {"period":"May","production":1876,"days":31},
 {"period":"June","production":1876,"days":30},
@@ -20,10 +20,6 @@ let dailyProduction=[
     shed3={"name":"Shed C","amount":486}, 
     shed4={"name":"Shed D", "amount":572}
 ];
-function getPrice(){
-    document.getElementById("price").style.display="block";
-    document.getElementById('addform').style.display='none';
-}
 function getShed(){
     document.getElementById("headholder").innerHTML="Production per shed"
     var table = document.getElementById("data");
@@ -31,7 +27,7 @@ function getShed(){
     var tr="";
     dailyProduction.forEach(x=>{
        tr+='<tr>';
-       tr+='<td>'+'Your production from '+x.name+'</td>'+'<td>'+x.amount+'liters per day'+'</td>';
+       tr+='<td>'+'Your production from '+x.name+'</td>'+'<td>'+x.amount+' liters per day'+'</td>';
        tr+='</tr>'
   
     })
@@ -44,7 +40,20 @@ function addData(){
 }
 function getOut() {
     window.location.replace("index.html");
-    
 }
-
-
+function getTotal(){
+    document.getElementById("price").style.display="none";
+    document.getElementById("addform").style.display="none";
+    //document.getElementById("").style.display="";
+    document.getElementById("headholder").innerHTML="Production per Year"
+    var table = document.getElementById("data");
+    table.innerHTML="";
+    var tr="";
+    yearProduction.forEach(x=>{
+       tr+='<tr>';
+       tr+='<td>'+'Your income for '+x.period +'</td><td>'+' KSh.'+x.production*x.days*price+'</td>';
+       tr+='</tr>'
+  
+    })
+    table.innerHTML+=tr;
+}
