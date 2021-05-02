@@ -15,20 +15,22 @@ var yearProduction=[
     
 ];
 let dailyProduction=[
-    shed1={"name":"Shed A","amount": 510},
-    shed2={"name":"Shed B","amount": 308}, 
-    shed3={"name":"Shed C","amount":486}, 
-    shed4={"name":"Shed D", "amount":572}
+{"name":"Shed A","amount": 510},
+{"name":"Shed B","amount": 308}, 
+{"name":"Shed C","amount":486}, 
+{"name":"Shed D", "amount":572}
 ];
 
 function getPrice(){
     document.getElementById("price").style.display="block";
     document.getElementById('addform').style.display='none';
+    document.getElementById("summaryholder").style.display="none";
 }
 function getShed(){
     document.getElementById("headholder").innerHTML="Production per shed";
     document.getElementById("addform").style.display="none";
     document.getElementById("price").style.display="none"
+    document.getElementById("summaryholder").style.display="none";
     var table = document.getElementById("data");
     table.innerHTML="";
     var tr="";
@@ -36,13 +38,17 @@ function getShed(){
        tr+='<tr>';
        tr+='<td>'+'Your production from '+x.name+'</td>'+'<td>'+x.amount+' liters per day'+'</td>';
        tr+='</tr>'
-  
     })
+    var sum = dailyProduction.reduce(function (total, currentValue) {
+        return total + currentValue.amount;
+    }, 0);
+    tr+="<tr style='font-weight:bold';><td> Total</td><td>"+sum +" litres per day</td><td></td></tr>";
     table.innerHTML+=tr;
 }
 function addData(){
     document.getElementById('addform').style.display='block';
     document.getElementById('price').style.display="none";
+    document.getElementById("summaryholder").style.display="none";
     
 }
 function getOut() {
@@ -52,6 +58,7 @@ function getTotal(){
     document.getElementById("headholder").innerHTML="Production per Year";
     document.getElementById("addform").style.display="none";
     document.getElementById("price").style.display="none"
+    document.getElementById("summaryholder").style.display="none";
     var table = document.getElementById("data");
     table.innerHTML="";
     var tr="";
@@ -61,14 +68,19 @@ function getTotal(){
        tr+='</tr>'
   
     })
+    var sum = yearProduction.reduce(function (total, currentValue) {
+        return total + currentValue.production;
+    }, 0);
+    tr+="<tr style='font-weight:bold';><td> Total</td><td> KSh "+sum*365+" </td><td></td></tr>";
     table.innerHTML+=tr;
 }
 function getSummary(){
-    document.getElementById("price").style.display="none";
+    document.getElementById("price").style.display="block";
     document.getElementById("addform").style.display="none";
-    document.getElementById('price').style.display="block";
+    document.getElementById("summaryholder").style.display="none";
+    
 }
-function incomeOvertime(currentprice) {
+function incomeOvertime() {
     let b=document.getElementById("cprice").value;
     let diff=b-price;
     var table = document.getElementById("tdata");
@@ -82,4 +94,17 @@ function incomeOvertime(currentprice) {
     });
     table.innerHTML+=n;
     
+}function getEarn(){
+     document.getElementById("price").style.display="none";
+    document.getElementById("addform").style.display="none";
+    document.getElementById("summaryholder").style.display="block";
+}
+function getAll(price) {
+    var price=document.getElementById("saleprice").value;
+    var sum = dailyProduction.reduce(function (total, currentValue) {
+        return total + currentValue.amount;
+    }, 0);
+    document.getElementById("weekpro").innerHTML=sum*7*price;
+    document.getElementById("yearpro").innerHTML=sum*365*price;
+
 }
