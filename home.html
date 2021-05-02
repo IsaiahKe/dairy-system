@@ -19,10 +19,27 @@
 <body>
 <div class="body">
    <div class="main">
-    
+    <div class="sidenav" id="sidenav">
+       <div class="snavhead"><div style="float: left;">MENU</div></div>
+        <div class="holder" onclick="getData()">Dashboard</div>
+        <div class="holder" onclick="addData()">Add Sales</div>
+        <div class="holder" onclick="getMonth('')">Sheds</div>
+        <div class="holder" onclick="getData()">Set Price</div>
+        <div class="holder" onclick="getTotal()">Totals</div>
+        <div class="holder" onclick="getMonth('')">Log Out</div>
+    </div> 
+    <div class="bodyholder">
+        <div class="contholder">
+           <div class="headholder" id="headholder">Production information per Shed</div>
+            <table style="width:80%;" id="table">
+                <tr><th colspan="2">Information</th><th>amount</th></tr>
+                <tr style="min-height:100px;"id="dataholder"><td></td><td></td></tr>
+            </table>
+           
+        </div>
+    </div>
      </div>
    </div>
-</div>
 </body>
 </html>
 <script>
