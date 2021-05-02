@@ -20,8 +20,15 @@ let dailyProduction=[
     shed3={"name":"Shed C","amount":486}, 
     shed4={"name":"Shed D", "amount":572}
 ];
+
+function getPrice(){
+    document.getElementById("price").style.display="block";
+    document.getElementById('addform').style.display='none';
+}
 function getShed(){
-    document.getElementById("headholder").innerHTML="Production per shed"
+    document.getElementById("headholder").innerHTML="Production per shed";
+    document.getElementById("addform").style.display="none";
+    document.getElementById("price").style.display="none"
     var table = document.getElementById("data");
     table.innerHTML="";
     var tr="";
@@ -42,18 +49,37 @@ function getOut() {
     window.location.replace("index.html");
 }
 function getTotal(){
-    document.getElementById("price").style.display="none";
+    document.getElementById("headholder").innerHTML="Production per Year";
     document.getElementById("addform").style.display="none";
-    //document.getElementById("").style.display="";
-    document.getElementById("headholder").innerHTML="Production per Year"
+    document.getElementById("price").style.display="none"
     var table = document.getElementById("data");
     table.innerHTML="";
     var tr="";
     yearProduction.forEach(x=>{
        tr+='<tr>';
-       tr+='<td>'+'Your income for '+x.period +'</td><td>'+' KSh.'+x.production*x.days*price+'</td>';
+       tr+='<td>'+'Your production from '+x.period+'</td>'+'<td>'+'Ksh '+x.production*x.days+' '+'</td>';
        tr+='</tr>'
   
     })
     table.innerHTML+=tr;
+}
+function getSummary(){
+    document.getElementById("price").style.display="none";
+    document.getElementById("addform").style.display="none";
+    document.getElementById('price').style.display="block";
+}
+function incomeOvertime(currentprice) {
+    let b=document.getElementById("cprice").value;
+    let diff=b-price;
+    var table = document.getElementById("tdata");
+    table.innerHTML="";
+    var n="";
+    yearProduction.forEach(x=>{
+       n+='<tr>';
+       n+='<td>'+'Your income for '+x.period +'</td><td>'+x.production*x.days*price+'</td><td>'+
+       x.production*x.days*b+'</td><td>'+x.days*x.production*diff+"</td>";
+  
+    });
+    table.innerHTML+=n;
+    
 }
