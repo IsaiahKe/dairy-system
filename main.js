@@ -108,3 +108,10 @@ function getAll(price) {
     document.getElementById("yearpro").innerHTML=sum*365*price;
 
 }
+function addSale(){
+    let shedName=document.getElementById("shed").value;
+    let amountCap=document.getElementById("collectionAmount").value;
+    let addNew={"name":shedName,"amount":amountCap}
+    dailyProduction.push(addNew);
+    document.getElementById("addContent").reset();
+}
