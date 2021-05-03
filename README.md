@@ -14,6 +14,6 @@ For installation
 * unzip and open folder
 * index file in browser 
 # License #
-
+[MIT](https://github.com/IsaiahKe/dairy-system/edit/master/license)
 # author #
 isaiahKe 
