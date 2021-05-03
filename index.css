@@ -62,3 +62,4 @@ input[type='text'],[type='text'],[type='text']{width: 80%;height:30px;color: bla
 .snavhead{display: flex;justify-content: space-between;margin-bottom:10px;height:30px;
     font-weight: bold;font-size: 28px;
 }
+.span{font-family: rockwell;font-weight: bold;}
